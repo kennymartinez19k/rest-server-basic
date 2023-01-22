@@ -5,6 +5,7 @@ class Server{
     constructor(){
         this.app = express()
         this.middleWares()
+        this.port = process.env.PORT || 8090
         
         this.routes()
     }
@@ -22,8 +23,8 @@ class Server{
     }
 
     listen(){
-        this.app.listen(process.env.PORT, () => {
-            console.log("Escuchando al puerto " + process.env.PORT)
+        this.app.listen(this.port, () => {
+            console.log("Escuchando al puerto " + this.port)
         })
     }
 }
