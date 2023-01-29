@@ -1,12 +1,25 @@
 const express = require('express')
 require('dotenv').config()
 const cors = require('cors')
+const { DBConnection } = require('../DB/config')
 class Server{
     constructor(){
         this.app = express()
+
+        // connect to DB
+
+        this.connectDB()
+
+        // Call middlewares
         this.middleWares()
+
+        // call routes
         
         this.routes()
+    }
+
+    async connectDB(){
+        await DBConnection()
     }
 
     middleWares(){
